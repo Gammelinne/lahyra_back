@@ -17,12 +17,17 @@ class CreateUsersTable extends Migration
             $table->uuid('id')->primary();
             $table->string('first_name');
             $table->string('last_name');
+            $table->string('gender');
             $table->string('pseudo')->unique();
             $table->string('avatar')->nullable();
             $table->string('email')->unique();
+            $table->string('phone')->unique();
+            $table->date('birthday');
+            $table->longText('bio')->nullable();
+            $table->string('address');
+            $table->string('password');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->default(false);
-            $table->string('password');
             
             $table->timestamps();
         });

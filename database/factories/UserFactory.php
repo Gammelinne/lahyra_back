@@ -14,12 +14,20 @@ class UserFactory extends Factory
      */
     public function definition()
     {
+        $password = 'kiki';
+        $gender = ['M', 'F', 'O'];
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '', // password
-            'remember_token' => Str::random(10),
+            'first_name' => $this->faker->firstName,
+            'last_name' => $this->faker->lastName,
+            'pseudo' => $this->faker->unique()->userName,
+            'avatar' => $this->faker->imageUrl(640, 480, 'people', true, 'Faker'),
+            'email' => $this->faker->unique()->safeEmail,
+            'phone' => '0' . $this->faker->unique()->numberBetween(600000000, 799999999),
+            'birthday' => $this->faker->date($format = 'Y-m-d', $max = 'now'),
+            'bio' => $this->faker->text($maxNbChars = 120),
+            'gender' => $gender[rand(0, 2)],
+            'address' => $this->faker->address,
+            'password' => bcrypt($password),
         ];
     }
 
