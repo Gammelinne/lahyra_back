@@ -26,7 +26,7 @@ class PassportAuthController extends Controller
             'birthday' => 'required',
             'address' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8|max:36|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/', // at least one uppercase, one lowercase and one digit
 
         ]);
         $recaptha_token = $request->recaptha_token;
