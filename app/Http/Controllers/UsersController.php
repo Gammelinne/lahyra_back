@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 
 class UsersController extends Controller
 {
+    // Get token
     public function getToken(Request $request, User $user)
     {
         $token = $user->createToken('LaravelAuthApp')->accessToken;
